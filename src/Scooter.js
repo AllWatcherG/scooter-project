@@ -30,7 +30,7 @@ class Scooter{
   async recharge() {
     console.log('Starting charge');
     
-    await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
+    // await new Promise(resolve => setTimeout(resolve, 2000)); // wait 2 seconds
     this.charge = 100
 
     console.log('Charge complete');   
@@ -38,7 +38,7 @@ class Scooter{
 
   async requestRepair(){
     console.log('requesting Repair....');
-    await new Promise(resolve => setTimeout(resolve, 5000)); // wait 5 seconds
+    // await new Promise(resolve => setTimeout(resolve, 5000)); // wait 5 seconds
     this.isBroken = false;
     console.log('Repair Complete')
 
