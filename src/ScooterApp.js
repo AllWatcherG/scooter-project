@@ -18,7 +18,7 @@ class ScooterApp {
       throw new Error("User is too young to register");
     } else {
       const newUser = new User(username, password, age);
-      this.registeredUsers[username] = newUser.username;
+      this.registeredUsers[username] = newUser;
       console.log("User has been registered");
       return newUser;
     }
@@ -26,21 +26,22 @@ class ScooterApp {
   loginUser(username, password) {
     const user = this.registeredUsers[username];
     if (user) {
-      login(password);
-      console.log("User has been logged in");
+      user.login(password);
+      console.log(`user has been logged in`);
+      return user;
     } else {
-      throw new Error("Username or password is incorrect");
+      throw new Error(`Username or password is incorrect.`);
     }
   }
   logoutUser(username) {
-    const user = this.registeredUsers[username];
-    if (user) {
-      user.logout();
-      console.log("User is logged out");
-    } else {
-      throw new Error("No such user is logged in");
+    if(this.registeredUsers[username] !== undefined) {
+        this.registeredUsers[username].logout()
+        console.log(`${username} has been logged out`)
+    }else if(user.loggedIn === false) {
+        throw new Error(`user isn't logged in`)
     }
-  }
+
+}
   createScooter(station) {
     if (!this.stations[station]) {
       throw new Error("No such station exists");
@@ -81,13 +82,10 @@ class ScooterApp {
   }
 
   print() {
-    console.log("Registered users:");
-    Object.values(this.registeredUsers).forEach(user => console.log(user));
-    console.log("Stations:");
-    Object.entries(this.stations).forEach(([station, scooters]) =>
-      console.log(`${station}: ${scooters.length} scooters`)
-    );
-  }
+    console.log(this.registeredUsers)
+    console.log(this.stations)
 }
+}
+
 
 module.exports = ScooterApp
