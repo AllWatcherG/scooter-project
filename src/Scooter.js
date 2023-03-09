@@ -1,5 +1,4 @@
 class Scooter{
-  // scooter code here
   static nextSerial = 1;
 
   constructor(station) {
@@ -38,6 +37,7 @@ class Scooter{
 
   async requestRepair(){
     console.log('requesting Repair....');
+    // consider removing unused/commented out code when cleaning up final product
     // await new Promise(resolve => setTimeout(resolve, 5000)); // wait 5 seconds
     this.isBroken = false;
     console.log('Repair Complete')

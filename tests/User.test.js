@@ -1,6 +1,7 @@
 const User = require('../src/User')
 
-// User tests here
+// make sure that your indentation sizes in this file are the same 
+// as the class files
 describe('User object', () => {
     
     test('Initializes properties correctly', () => {
@@ -35,8 +36,8 @@ describe('User mehtods', () => {
 
     test('Logs out', ()=>{
         const user1 = new User('kingTimmy', 'TimmyRulez', 20)
-        user1.login
-        user1.logout
+        user1.login()
+        user1.logout()
         expect(user1.loggedIn).toBe(false)
     })
 })
